@@ -5,3 +5,5 @@ Want to use data from [Rap Genius](http://rapgenius.com) in your Python scripts 
 Welcome to PyGenius -- the Python Rap Genius scraper.
 
 More details to come.
+
+Thanks to David Rios for inspiration.
