@@ -51,7 +51,7 @@ def returnDates(query):
 	dates = []
 	info = []
 
-	for i in range(0, 15):
+	for i in range(0, l):
 		opener = urllib2.build_opener()
 		url = links[i]
 		page = opener.open(url)
