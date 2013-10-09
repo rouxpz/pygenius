@@ -36,3 +36,4 @@ def wordsearch(page, query):
 		data.append(clean)
 
 	return data
+
