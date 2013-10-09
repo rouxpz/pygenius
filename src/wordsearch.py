@@ -6,7 +6,7 @@ import urllib2
 
 from bs4 import BeautifulSoup
 
-def searchByKeyword(page, query):
+def wordsearch(page, query):
 
 	opener = urllib2.build_opener()
 	url = "http://rapgenius.com/search?page=%d&amp;q=%s" % (page, query)
