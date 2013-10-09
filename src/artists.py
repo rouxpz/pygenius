@@ -31,7 +31,7 @@ def albumList(query, arg):
 		album = new[1]
 		albums.append(album)
 		
-		link = new[0]
+		link = 'http://rapgenius.com%s' % new[0]
 		links.append(link)
 
 	if (arg == 'links'):
@@ -44,16 +44,16 @@ def albumList(query, arg):
 def returnDates(query):
 
 	titles = albumList(query, 'titles')
-	urls = albumList(query, 'links')
+	links = albumList(query, 'links')
 
-	l = len(urls)
+	l = len(links)
 
 	dates = []
 	info = []
 
-	for i in range(0, 3):
+	for i in range(0, 15):
 		opener = urllib2.build_opener()
-		url = "http://rapgenius.com%s" % urls[i]
+		url = links[i]
 		page = opener.open(url)
 
 		soup = BeautifulSoup(page, from_encoding="utf-8")
@@ -64,10 +64,15 @@ def returnDates(query):
 		for j in range(0, k):
 			date = str(names[j])
 			date = ' '.join(date.split())
-			search = date.find('(')
-			if search != -1:
-				date = date.split('(')[1] #strip everything before the date
-				date = date.rstrip(")) Lyrics </h1>") #stripping everything after the date
+			search1 = date.find('(1')
+			search2 = date.find('(2')
+			if search1 != -1:
+				date = '1'+ date.split('(1')[1] #strip everything before the date
+				date = date.split(')')[0] #stripping everything after the date
+				dates.append(date)
+			elif search2 != -1:
+				date = '2'+ date.split('(2')[1] #strip everything before the date
+				date = date.split(')')[0] #stripping everything after the date
 				dates.append(date)
 			else:
 				dates.append('None')
