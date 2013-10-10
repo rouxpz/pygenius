@@ -7,6 +7,8 @@ import re
 
 from bs4 import BeautifulSoup
 
+#returns song lyrics and the link to the annotations.
+#when arg="annotations", the results can be passed into the searchAnnotations() function below.
 def searchSong(artist, query, arg='data'):
 
 	data = []
@@ -51,8 +53,30 @@ def searchSong(artist, query, arg='data'):
 			if search1 != -1:
 				annotations.append("Not annotated")
 			elif search2 != -1:
-				annotations.append("YES")
+				annotation = re.sub(r'\<.*?\/', '', annotation)
+				annotation = annotation.replace('">', '')
+				annotations.append('http://rapgenius.com/' + annotation)
 
+	m = len(lyrics)
 
-	return annotations
+	for i in range (0, m):
+		data.append([lyrics[i], annotations[i]])
+
+	if arg == 'lyrics':
+		return lyrics
+	elif arg == 'annotations':
+		return annotations
+	else:
+		return data
+
+#returns content of annotations
+def searchAnnotations(query):
+
+	opener = urllib2.build_opener()
+	url = query
+	page = opener.open(url)
+	soup = BeautifulSoup(page, from_encoding="utf=8")
+	text = soup.find_all(id="main")
+
+	print text
 
