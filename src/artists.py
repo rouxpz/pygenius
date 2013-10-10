@@ -6,7 +6,7 @@ import urllib2
 
 from bs4 import BeautifulSoup
 
-def albumList(query, arg):
+def albumList(query, arg='titles'):
 #returns a list of album titles or links to the album on rapgenius.
 
 	albums = []
@@ -36,10 +36,8 @@ def albumList(query, arg):
 
 	if (arg == 'links'):
 		return links
-	elif (arg == 'titles'):
-		return albums
 	else:
-		return "ERROR"
+		return albums
 
 def returnDates(query):
 
@@ -80,7 +78,3 @@ def returnDates(query):
 		info.append([titles[i], dates[i]])
 
 	return info
-
-
-
-		#print url

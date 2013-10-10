@@ -6,7 +6,7 @@ import urllib2
 
 from bs4 import BeautifulSoup
 
-def wordsearch(page, query):
+def searchWords(page, query, arg='data'):
 
 	opener = urllib2.build_opener()
 	url = "http://rapgenius.com/search?page=%d&amp;q=%s" % (page, query)
@@ -17,6 +17,7 @@ def wordsearch(page, query):
 
 	#initialize blank list in which to keep the data
 	data = []
+	links = []
 
 	for i in range(0,l):
         #forcing text into a string format, cleaning up the text
@@ -33,7 +34,14 @@ def wordsearch(page, query):
 		clean = clean.replace('   <p>', ',')
 		clean = clean.replace(' – ', ',')
 		clean = clean.replace('&amp;', '&')
-		data.append(clean)
+		results = clean.split(',')
+		results[0] = 'http://rapgenius.com/%s' % results[0]
+		results[2] = results[2].strip()
+		data.append([results[1], results[2]])
+		links.append(results[0])
 
-	return data
+	if arg == 'link':
+		return links
+	else:
+		return data
 
