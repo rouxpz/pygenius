@@ -11,6 +11,7 @@ def searchSong(artist, query, arg='data'):
 
 	data = []
 	lyrics = []
+	annotations = []
 
 	artist = '-'.join(artist.split())
 
@@ -27,19 +28,31 @@ def searchSong(artist, query, arg='data'):
 
 	for i in range(0, l):
 		words = str(text[i])
-		words = words.replace("<div", "[<div").replace('">', '">]')
-		words = re.sub(r'\[.*?\]', '', words)
-		words = words.replace('">]', '">')
-		words = words.replace('<br/>', ',')
+		words = words.replace("<div", "{<div").replace('">', '">}')
+		words = re.sub(r'\{.*?\}', '', words)
+		words = words.replace('">}', '">')
+		words = words.replace("<i>", '').replace("</i>", '')
+		words = words.replace('<br/>', '')
+		words = words.replace("<p>", '').replace("</p>", '')
 		words = words.split("</a>")
 		m = len(words)
 
-		#print words[3]
 		for j in range(0, m-1):
-			sections = words[j].split('">')
-			lyric = sections[1]
-			annotation = sections[0]
+			a = re.search(r'\<.*?\>', words[j])
+			lyric = re.sub(r'\<.*?\>', '', words[j])
+			lyric = lyric.strip()
+			#lyric = ' '.join(lyric.split())
+			annotation = a.group(0)
 			lyrics.append(lyric)
 
-	return lyrics
+			search1 = annotation.find('"no_annotation"')
+			search2 = annotation.find('data-editorial-state')
+
+			if search1 != -1:
+				annotations.append("Not annotated")
+			elif search2 != -1:
+				annotations.append("YES")
+
+
+	return annotations
 
