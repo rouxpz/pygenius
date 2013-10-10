@@ -3,6 +3,7 @@
 import sys
 import json
 import urllib2
+import re
 
 from bs4 import BeautifulSoup
 
@@ -26,19 +27,19 @@ def searchSong(artist, query, arg='data'):
 
 	for i in range(0, l):
 		words = str(text[i])
-		#lyric = lyric.split('<br/')
-		#lyric = lyric.split("<p>")[1]
-		words = words.split("<br/>")
+		words = words.replace("<div", "[<div").replace('">', '">]')
+		words = re.sub(r'\[.*?\]', '', words)
+		words = words.replace('">]', '">')
+		words = words.replace('<br/>', ',')
+		words = words.split("</a>")
 		m = len(words)
-		for j in range(0, 10):
-			if j == 0:
-				words[j] = words[j].split("p>")[1]
-				print words[j]		
-			elif j > 0:
-				lyric = words[j].split(">")[1]
-				lyric = lyric.split("<")[0]
-				#print lyric
-				lyrics.append(lyric)
-				#n = len(wordsnew)
-				#print n
-	print lyrics
+
+		#print words[3]
+		for j in range(0, m-1):
+			sections = words[j].split('">')
+			lyric = sections[1]
+			annotation = sections[0]
+			lyrics.append(lyric)
+
+	return lyrics
+
