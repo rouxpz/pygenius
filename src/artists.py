@@ -40,7 +40,7 @@ def albumList(query, arg='titles'):
 		return albums
 
 def returnDates(query):
-
+	#returning album names and dates they were released.
 	titles = albumList(query, 'titles')
 	links = albumList(query, 'links')
 

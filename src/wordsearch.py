@@ -22,10 +22,13 @@ def searchWords(page, query, arg='data'):
 	for i in range(0,l):
         #forcing text into a string format, cleaning up the text
 		coded = str(text[i])
+
 		#removing extra whitespace
 		newcoded = ' '.join(coded.split())
+
 		#getting rid of all the commas that were already in there
 		clean = newcoded.replace(',', '') 
+
 		#replacing all the extraneous HTML
 		clean = clean.replace('<li class="search_result">', '')
 		clean = clean.replace('<a class=" song_link" href="', '')
@@ -34,6 +37,8 @@ def searchWords(page, query, arg='data'):
 		clean = clean.replace('   <p>', ',')
 		clean = clean.replace(' – ', ',')
 		clean = clean.replace('&amp;', '&')
+
+		#splitting into list
 		results = clean.split(',')
 		results[0] = 'http://rapgenius.com/%s' % results[0]
 		results[2] = results[2].strip()
