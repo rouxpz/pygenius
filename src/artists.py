@@ -35,7 +35,7 @@ def albumList(query, arg='titles'):
 	else:
 		return albums
 
-def returnDates(query):
+def getDates(query):
 	#returning album names and dates they were released.
 	titles = albumList(query, 'titles')
 	links = albumList(query, 'links')
@@ -107,5 +107,19 @@ def getAlbumData(artist, query):
 
 #returns an artist's bio
 def getArtistBio(artist):
-	print "Working on it!"
+	
+	artist = '-'.join(artist.split())
+	url = "http://rapgenius.com/artists/%s" % artist
+
+	soup = pageopen.openPage(url)
+	text = soup.find_all(property="og:description")
+	l = len(text)
+
+	for i in range(0, l):
+		bio = str(text[i])
+		bio = re.sub(r'\<.*?\"', '', bio)
+		bio = re.sub(r'\".*?\>', '', bio)
+		bio = bio.replace('&amp;', '&')
+
+	return bio
 
