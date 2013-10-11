@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import sys
-import json
-import urllib2
-
-from bs4 import BeautifulSoup
+import re
+import pageopen
 
 def albumList(query, arg='titles'):
 #returns a list of album titles or links to the album on rapgenius.
@@ -13,10 +11,8 @@ def albumList(query, arg='titles'):
 	links = []
 
 	query = '-'.join(query.split())
-	opener = urllib2.build_opener()
 	url = "http://rapgenius.com/artists/%s" % query
-	page = opener.open(url)
-	soup = BeautifulSoup(page, from_encoding="utf-8")
+	soup = pageopen.openPage(url)
 	text = soup.find_all(class_="album_link")
 
 	l = len(text)
@@ -50,11 +46,9 @@ def returnDates(query):
 	info = []
 
 	for i in range(0, l):
-		opener = urllib2.build_opener()
-		url = links[i]
-		page = opener.open(url)
 
-		soup = BeautifulSoup(page, from_encoding="utf-8")
+		url = links[i]
+		soup = pageopen.openPage(url)
 		names = soup.find_all('h1', class_="name")
 
 		k = len(names)
@@ -78,3 +72,40 @@ def returnDates(query):
 		info.append([titles[i], dates[i]])
 
 	return info
+
+#returns metadata about an album: description, track number, and track name
+def getAlbumData(artist, query):
+
+	tracks = []
+
+	artistlink = '-'.join(artist.split())
+	query = '-'.join(query.split())
+	url = "http://rapgenius.com/albums/%s/%s" % (artistlink, query)
+
+	soup = pageopen.openPage(url)
+	meta = soup.find_all(property="og:description")
+	text = soup.find_all(class_="song_name")
+
+	meta = str(meta)
+	meta = re.sub(r'\<.*?\"', '', meta)
+	meta = re.sub(r'\" .*?\>', '', meta)
+	tracks.append(meta)
+
+	l = len(text)
+
+	for i in range(0, l):
+		trackNo = i+1
+		track = str(text[i])
+		track = re.sub(r'\<.*?\>', '', track)
+		track = ' '.join(track.split())
+		track = track.split('– ')[1]
+		track = track.split(' Lyrics')[0]
+		tracks.append([trackNo, track])
+	
+	return tracks
+	
+
+#returns an artist's bio
+def getArtistBio(artist):
+	print "Working on it!"
+

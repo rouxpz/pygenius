@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import sys
-import json
-import urllib2
 import re
-
-from bs4 import BeautifulSoup
+import pageopen
 
 #returns song lyrics and the link to the annotations.
 #when arg="annotations", the results can be passed into the searchAnnotations() function below.
@@ -21,10 +18,8 @@ def searchSong(artist, query, arg='data'):
 	query = query.replace("'", '')
 	query = artist +'-' + query + '-lyrics'
 
-	opener = urllib2.build_opener()
 	url = "http://rapgenius.com/%s" % query
-	page = opener.open(url)
-	soup = BeautifulSoup(page, from_encoding="utf-8")
+	soup = pageopen.openPage(url)
 	text = soup.find_all(class_="lyrics")
 	l = len(text)
 
@@ -72,10 +67,8 @@ def searchSong(artist, query, arg='data'):
 #returns content of annotations
 def searchAnnotations(query):
 
-	opener = urllib2.build_opener()
 	url = query
-	page = opener.open(url)
-	soup = BeautifulSoup(page, from_encoding="utf=8")
+	soup = pageopen.openPage(url)
 	text = soup.find_all(id="main")
 
 	note = str(text)
@@ -85,4 +78,3 @@ def searchAnnotations(query):
 	note = note.replace("<p>", '').replace("</p>", '').replace('<strong>', '').replace('</strong>','').replace('<em>', '"').replace('</em>', '"')
 
 	return note
-

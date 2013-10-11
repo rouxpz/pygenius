@@ -1,17 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import sys
-import json
-import urllib2
-
-from bs4 import BeautifulSoup
+import pageopen
 
 def searchWords(page, query, arg='data'):
 
-	opener = urllib2.build_opener()
 	url = "http://rapgenius.com/search?page=%d&amp;q=%s" % (page, query)
-	page = opener.open(url)
-	soup = BeautifulSoup(page, from_encoding="utf-8")
+	soup = pageopen.openPage(url)
 	text = soup.find_all(class_="search_result") #finding everything in the class "search_result"
 	l = len(text)
 
