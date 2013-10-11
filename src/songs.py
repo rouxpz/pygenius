@@ -78,5 +78,11 @@ def searchAnnotations(query):
 	soup = BeautifulSoup(page, from_encoding="utf=8")
 	text = soup.find_all(id="main")
 
-	print text
+	note = str(text)
+
+	note = note.split("</div>")[1]
+	note = note.split("<p><em>")[0]
+	note = note.replace("<p>", '').replace("</p>", '').replace('<strong>', '').replace('</strong>','').replace('<em>', '"').replace('</em>', '"')
+
+	return note
 
