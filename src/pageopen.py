@@ -7,4 +7,6 @@ def openPage(url):
 	page = opener.open(url)
 	soup = BeautifulSoup(page, from_encoding="utf-8")
 
+	opener.close()
+
 	return soup

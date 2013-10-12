@@ -75,6 +75,7 @@ def searchAnnotations(query):
 
 	note = note.split("</div>")[1]
 	note = note.split("<p><em>")[0]
-	note = note.replace("<p>", '').replace("</p>", '').replace('<strong>', '').replace('</strong>','').replace('<em>', '"').replace('</em>', '"')
+	note = note.replace("<p>", '').replace("</p>", '').replace('<strong>', '').replace('</strong>','').replace('<em>', '"').replace('</em>', '"').replace("<blockquote>", '"').replace('</blockquote', '"')
 
 	return note
+	

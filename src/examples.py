@@ -32,7 +32,7 @@ for i in range(0, m):
 
 
 #testing searching through songs for lyrics
-lyrics = songs.searchSong("drake", "worst behavior", "lyrics")
+lyrics = songs.searchSong("kanye west", "gold digger", "lyrics")
 l = len(lyrics)
 
 for i in range(0, l):
@@ -56,16 +56,21 @@ for i in range(0,10):
 		note = "No annotation"
 		print lyric + ': \n' + note + '\n'
 
-
 #grabbing album metadata
-metadata = artists.getAlbumData("diddy", "press play")
+metadata = artists.getAlbumData("kanye west", "my beautiful dark twisted fantasy")
 
 l = len(metadata)
 
 for i in range(0, l):
 	print metadata[i]
 
-
 #grabbing artist bio
-bio = artists.getArtistBio("earl sweatshirt")
+bio = artists.getArtistBio("kanye west")
 print bio
+
+
+#grabbing list of songs
+songs = artists.getPopularSongs("lil kim")
+
+for song in songs:
+	print song

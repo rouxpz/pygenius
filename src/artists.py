@@ -123,3 +123,36 @@ def getArtistBio(artist):
 
 	return bio
 
+#returns current popular songs by an artist
+def getPopularSongs(artist, arg=None):
+
+	popularSongs = []
+	links = []
+
+	artist = '-'.join(artist.split())
+	url = "http://rapgenius.com/artists/%s" % artist
+
+	soup = pageopen.openPage(url)
+	text = soup.find_all(class_="song_list")
+	songs = str(text[0])
+	songs = songs.split('</li')
+
+	for song in songs:
+		l = re.search(r'\"\/.*?\"', song)
+		if l != None:
+			link = l.group(0)
+			link = link.replace('"', '')
+			links.append('http://rapgenius.com%s' % link)
+		song = re.sub(r'\<.*?\>', '', song)
+		song = song.replace('>', '').replace('&amp;', '&')
+		song = ' '.join(song.split())
+		popularSongs.append(song)
+
+	popularSongs.remove('')
+
+	if arg == 'link':
+		return links
+	else:
+		return popularSongs
+
+
