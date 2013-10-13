@@ -2,52 +2,45 @@ import wordsearch
 import artists
 import songs
 
-#testing search by keyword
+###search by keyword###
 term = "twerk"
-for item in range(1, 2): #for each page of results returned...
+for item in range(1, 2): 
 	data = wordsearch.searchWords(item, term)
 	l = len(data)
 	for i in range(0, l):
-		#target.write(i)
-		#target.write("\n")
 		info = data[i]
 		print info
 
 
-#testing album listing for an artist
-record1 = artists.albumList("Pusha T")
-l = len(record1)
+###grab albums for an artist###
+records1 = artists.albumList('Pusha T')
 
-for i in range(0, l):
-	print record1[i]
-
-#testing getting dates for albums
-record2 = artists.getDates("Nicki Minaj")
-m = len(record2)
-
-for i in range(0, m):
-	#if record2[i][1] == "2010":
-	print record2[i]
-	#break
+for record in records1:
+	print record
 
 
-#testing searching through songs for lyrics
-lyrics = songs.searchSong("kanye west", "gold digger", "lyrics")
-l = len(lyrics)
+###getting dates for albums###
+records2 = artists.getDates('Nicki Minaj')
 
-for i in range(0, l):
-	print lyrics[i]
+for record in records2:
+	print record
 
 
-#searching annotations
-annotated = songs.searchSong("drake", "started from the bottom")
+###searching through songs for just the lyrics###
+lyrics = songs.searchSong('lil wayne', 'got money', 'lyrics')
+
+for lyric in lyrics:
+	print lyric
+
+
+###searching through songs for annotations###
+annotated = songs.searchSong('drake', 'started from the bottom')
 n = len(annotated)
 
-#print annotated[0]
-
-for i in range(0,10):
+for i in range(0,n):
 	lyric = annotated[i][0]
 	link = annotated[i][1]
+
 	#print notes
 	if link != "Not annotated":
 		note = songs.searchAnnotations(link)
@@ -56,21 +49,30 @@ for i in range(0,10):
 		note = "No annotation"
 		print lyric + ': \n' + note + '\n'
 
-#grabbing album metadata
-metadata = artists.getAlbumData("kanye west", "my beautiful dark twisted fantasy")
+
+###grabbing album metadata###
+metadata = artists.getAlbumData('kanye west', 'yeezus')
 
 l = len(metadata)
 
 for i in range(0, l):
 	print metadata[i]
 
-#grabbing artist bio
-bio = artists.getArtistBio("kanye west")
+
+###grabbing artist bio###
+bio = artists.getArtistBio('ol dirty bastard')
 print bio
 
 
-#grabbing list of songs
-songs = artists.getPopularSongs("lil kim")
+###grabbing list of popular songs###
+songs = artists.getPopularSongs('lil kim')
+
+for song in songs:
+	print song
+
+
+###listing all songs by an artist###
+songs = songs.findAllSongs('Kid Cudi')
 
 for song in songs:
 	print song
