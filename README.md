@@ -32,4 +32,7 @@ Returns lyrics for a specified song title.  If the optional third argument is se
 **songs.searchAnnotations(query)**  
 Will return content of a specified annotation link, including HTML links to pictures, videos and GIFs, as well as links to external sites referenced.
 
+**songs.findAllSongs(artist)**  
+Will return all songs on Rap Genius attributed to the specified artist.
+
 Thanks to David Rios for inspiration.
