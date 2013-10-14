@@ -60,7 +60,7 @@ def searchSong(artist, query, arg='data'):
 
 	if arg == 'lyrics':
 		return lyrics
-	elif arg == 'annotations':
+	elif arg == 'link':
 		return annotations
 	else:
 		return data
