@@ -33,6 +33,7 @@ def searchSong(artist, query, arg='data'):
 		words = words.replace('<br/>', '')
 		words = words.replace("<p>", '').replace("</p>", '')
 		words = words.split("</a>")
+
 		m = len(words)
 
 		for j in range(0, m-1):
@@ -41,6 +42,8 @@ def searchSong(artist, query, arg='data'):
 			lyric = lyric.strip()
 			#lyric = ' '.join(lyric.split())
 			annotation = a.group(0)
+			#print lyric
+			
 			lyrics.append(lyric)
 
 			search1 = annotation.find('"no_annotation"')
@@ -52,6 +55,8 @@ def searchSong(artist, query, arg='data'):
 				annotation = re.sub(r'\<.*?\/', '', annotation)
 				annotation = annotation.replace('">', '')
 				annotations.append('http://rapgenius.com/' + annotation)
+			else:
+				annotations.append("Not annotated")
 
 	m = len(lyrics)
 
@@ -64,6 +69,7 @@ def searchSong(artist, query, arg='data'):
 		return annotations
 	else:
 		return data
+
 
 #returns content of annotations
 def searchAnnotations(query):

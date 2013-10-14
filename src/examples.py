@@ -63,9 +63,9 @@ print bio
 
 
 ###grabbing list of popular songs###
-songs = artists.getPopularSongs('lil kim')
+songList = artists.getPopularSongs('lil kim')
 
-for song in songs:
+for song in songList:
 	print song
 
 
