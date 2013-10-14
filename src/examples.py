@@ -7,7 +7,7 @@ from pygenius import wordsearch
 term = "twerk"
 data = wordsearch.searchWords(term)
 
-print data[0] #returns first result
+print data[4] #returns first result
 
 
 ###grab albums for an artist###
