@@ -21,7 +21,7 @@ Returns the metadata about an album: description, track numbers, and track names
 Returns an artist's bio.
 
 **artists.getPopularSongs(artist, arg)**  
-Returns the most popular songs on Rap Genius by a specified artist.  If the third argument is 'link', will return links to songs that can be passed in to other functions.
+Returns the most popular songs on Rap Genius by a specified artist.  If the optional second argument is 'link', will return links to songs that can be passed in to other functions.
 
 **wordsearch.searchWords(keyword, arg)**  
 Returns results for a key word search, for the specified number of pages.  Default return is artist and song name, but if the optional second argument is set to 'link', a link to the song is returned.
