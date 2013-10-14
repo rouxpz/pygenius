@@ -7,7 +7,7 @@ from pygenius import wordsearch
 term = "twerk"
 data = wordsearch.searchWords(term)
 
-print data[4] #returns first result
+print data[0] #returns first result
 
 
 ###grab albums for an artist###
@@ -25,7 +25,7 @@ for record in records2:
 
 
 ###searching through songs for just the lyrics###
-lyrics = songs.searchSong('lil wayne', 'got money', 'lyrics')
+lyrics = songs.searchSong('lil wayne', 'mrs officer', 'lyrics')
 
 for lyric in lyrics:
 	print lyric
