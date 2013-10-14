@@ -1,15 +1,13 @@
-import wordsearch
-import artists
-import songs
+from pygenius import artists
+from pygenius import songs
+from pygenius import wordsearch
+
 
 ###search by keyword###
 term = "twerk"
-for item in range(1, 2): 
-	data = wordsearch.searchWords(item, term)
-	l = len(data)
-	for i in range(0, l):
-		info = data[i]
-		print info
+data = wordsearch.searchWords(term)
+
+print data[0] #returns first result
 
 
 ###grab albums for an artist###

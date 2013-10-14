@@ -3,4 +3,5 @@ artists.pyc
 pageopen.pyc
 songs.pyc
 wordsearch.pyc
-allsongs.py
+pagination.pyc
+__init__.pyc
