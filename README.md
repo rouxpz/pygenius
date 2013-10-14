@@ -23,11 +23,11 @@ Returns an artist's bio.
 **artists.getPopularSongs(artist, arg)**  
 Returns the most popular songs on Rap Genius by a specified artist.  If the third argument is 'link', will return links to songs that can be passed in to other functions.
 
-**wordsearch.searchWords(page, keyword, arg)**  
-Returns results for a key word search, for the specified number of pages.  Default return is artist and song name, but if the optional third argument is set to 'link', a link to the song is returned.
+**wordsearch.searchWords(keyword, arg)**  
+Returns results for a key word search, for the specified number of pages.  Default return is artist and song name, but if the optional second argument is set to 'link', a link to the song is returned.
 
 **songs.searchSong(artist, title, arg)**  
-Returns lyrics for a specified song title.  If the optional third argument is set to 'lyrics', only the lyrics will be returned; if it's 'annotations', only links to each lyric's annotations are returned (and can be passed into the searchAnnotations function); otherwise, both are returned by default.
+Returns lyrics for a specified song title.  If the optional third argument is set to 'lyrics', only the lyrics will be returned; if it's 'link', only links to each lyric's annotations are returned (and can be passed into the searchAnnotations function); otherwise, both are returned by default.
 
 **songs.searchAnnotations(query)**  
 Will return content of a specified annotation link, including HTML links to pictures, videos and GIFs, as well as links to external sites referenced.
