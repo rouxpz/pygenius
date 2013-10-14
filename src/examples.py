@@ -70,7 +70,7 @@ for song in songs:
 
 
 ###listing all songs by an artist###
-songs = songs.findAllSongs('Kid Cudi')
+tracks = songs.findAllSongs('Kid Cudi')
 
-for song in songs:
-	print song
+for track in tracks:
+	print track
