@@ -35,4 +35,11 @@ Will return content of a specified annotation link, including HTML links to pict
 **songs.findAllSongs(artist)**  
 Will return all songs on Rap Genius attributed to the specified artist.
 
+###Installation notes
+**Make sure to have the follow libraries installed** 
+
+Beautiful Soup 4 (pip install beautifulsoup4)
+
+###---###
+
 Thanks to David Rios for inspiration.
