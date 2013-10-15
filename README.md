@@ -5,6 +5,8 @@ Well guess what?  NOW U CAN, DAWG.
 
 Welcome to PyGenius.
 
+All functions should be run through the examples.py file, or any other script you create.
+
 ###Functions currently available
 **artists.albumList(artist, arg)**  
 Returns a list of albums that the specified artist has recorded.
