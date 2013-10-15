@@ -1,7 +1,6 @@
 # PyGenius
 
-Want to use data from [Rap Genius](http://rapgenius.com) in your Python scripts but bummed that they don't have an actual API?  
-
+Want to use data from rap songs in your Python scripts but bummed that there's no API to do so?  
 Well guess what?  NOW U CAN, DAWG.
 
 Welcome to PyGenius.
@@ -21,7 +20,7 @@ Returns the metadata about an album: description, track numbers, and track names
 Returns an artist's bio.
 
 **artists.getPopularSongs(artist, arg)**  
-Returns the most popular songs on Rap Genius by a specified artist.  If the optional second argument is 'link', will return links to songs that can be passed in to other functions.
+Returns the most popular songs by a specified artist.  If the optional second argument is 'link', will return links to songs that can be passed in to other functions.
 
 **wordsearch.searchWords(keyword, arg)**  
 Returns results for a key word search.  Default return is artist and song name, but if the optional second argument is set to 'link', a link to the song is returned.
@@ -32,11 +31,11 @@ Returns lyrics for a specified song title.  If the optional third argument is se
 **songs.searchAnnotations(query)**  
 Will return content of a specified annotation link, including HTML links to pictures, videos and GIFs, as well as links to external sites referenced.
 
-**songs.findAllSongs(artist)**  
-Will return all songs on Rap Genius attributed to the specified artist.
+**songs.findAllSongs(artist, arg)**  
+Will return all songs attributed to the specified artist.  If second argument is specified as 'links', will return the links to the songs; if 'titles', will return the song titles; otherwise, will return both by default.
 
 ###Installation notes
-**Make sure to have the follow libraries installed** 
+**Make sure to have the following libraries installed** 
 
 Beautiful Soup 4 (pip install beautifulsoup4)
 
