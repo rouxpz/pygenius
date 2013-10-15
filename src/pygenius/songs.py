@@ -88,8 +88,25 @@ def searchAnnotations(query):
 
 
 #finds all songs by a certain artist
-def findAllSongs(artist):
+def findAllSongs(artist, arg='songs'):
+
+	tracks = []
+	links = []
+
 	newUrl = pagination.openPage(artist)
 	songs = pagination.getSongs(newUrl)
 
-	return songs
+	for song in songs:
+		link = song[0]
+		track = song[1]
+
+		links.append(link)
+		tracks.append(track)
+
+
+	if arg == 'links':
+		return links
+	elif arg == 'titles':
+		return tracks
+	else:
+		return songs
