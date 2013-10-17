@@ -56,7 +56,7 @@ def getSongs(link):
 	l = l.replace(';page=', '').replace('&amp;', '')
 	l = int(l)
 
-	for i in range (1, l):
+	for i in range (1, l+1):
 
 		pageNo = ';page=%d&amp;' % i
 
@@ -69,26 +69,27 @@ def getSongs(link):
 		songs = str(songs)
 		songsList = songs.split('</li>')
 
-		#print songs
+		if len(songsList) > 1:
 
-		for song in songsList:
-			song = ' '.join(song.split())
-			if song != '</ul>]':
-				p = re.search(r'\/.*?\"', song)
-				page = p.group(0)
-				page = page.replace('"', '')
-				page = 'http://rapgenius.com%s' % page
-				links.append(page)
+			for song in songsList:
+				song = ' '.join(song.split())
 
-			song = re.sub(r'\<.*?\>', '', song)
-			song = song.replace('&amp;', '&').replace('[', '')
-			song = song.strip()
-			if song != ']':
-				tracks.append(song)
+				if song != '</ul>]':
+					p = re.search(r'\/.*?\"', song)
+					page = p.group(0)
+					page = page.replace('"', '')
+					page = 'http://rapgenius.com%s' % page
+					links.append(page)
+
+				song = re.sub(r'\<.*?\>', '', song)
+				song = song.replace('&amp;', '&').replace('[', '')
+				song = song.strip()
+				if song != ']':
+					tracks.append(song)
 
 		l = len(tracks)
 
 		for i in range(0, l):
 			data.append([links[i], tracks[i]])
 
-		return data
+	return data

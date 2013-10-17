@@ -96,6 +96,7 @@ def findAllSongs(artist, arg='songs'):
 	newUrl = pagination.openPage(artist)
 	songs = pagination.getSongs(newUrl)
 
+	
 	for song in songs:
 		link = song[0]
 		track = song[1]
@@ -110,3 +111,4 @@ def findAllSongs(artist, arg='songs'):
 		return tracks
 	else:
 		return songs
+	
