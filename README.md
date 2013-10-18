@@ -7,7 +7,7 @@ Welcome to PyGenius.
 
 All functions should be run through the examples.py file, or any other script you create.
 
-##Installation
+###Installation
 
 `pip install pygenius`  
 `easy_install pygenius`
