@@ -5,5 +5,11 @@ songs.pyc
 wordsearch.pyc
 pagination.pyc
 __init__.pyc
+setup.py
+src/README
+src/MANIFEST.in
+src/pygenius.egg-info
+src/build
+src/dist
 .DS_Store
 *~
