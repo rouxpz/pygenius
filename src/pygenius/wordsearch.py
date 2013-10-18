@@ -13,7 +13,7 @@ def searchWords(query, arg='data'):
 
 	num = pagination.getTotalPages(query)
 
-	for i in range(1, 2):
+	for i in range(1, num+1):
 	
 		url = "http://rapgenius.com/search?page=%d&amp;q=%s" % (i, query)
 		
