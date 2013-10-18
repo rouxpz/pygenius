@@ -7,6 +7,13 @@ Welcome to PyGenius.
 
 All functions should be run through the examples.py file, or any other script you create.
 
+##Installation
+
+`pip install pygenius`
+`easy_install pygenius`
+
+If you download the source from here, please make sure you have BeautifulSoup installed (`pip install beautifulsoup4`).
+
 ###To import the library
 
 At the top of your script, include the following:
@@ -43,10 +50,6 @@ Will return content of a specified annotation link, including HTML links to pict
 **songs.findAllSongs(artist, arg)**  
 Will return all songs attributed to the specified artist.  If second argument is specified as 'links', will return the links to the songs; if 'titles', will return the song titles; otherwise, will return both by default.
 
-###Installation notes
-**Make sure to have the following libraries installed** 
-
-Beautiful Soup 4 (`pip install beautifulsoup4`)
 
 ###---###
 
