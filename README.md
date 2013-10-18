@@ -7,6 +7,13 @@ Welcome to PyGenius.
 
 All functions should be run through the examples.py file, or any other script you create.
 
+###To import the library
+
+At the top of your script, include the following:
+
+`from pygenius import artists, songs, wordsearch`
+
+
 ###Functions currently available
 **artists.albumList(artist, arg)**  
 Returns a list of albums that the specified artist has recorded.
@@ -39,7 +46,7 @@ Will return all songs attributed to the specified artist.  If second argument is
 ###Installation notes
 **Make sure to have the following libraries installed** 
 
-Beautiful Soup 4 (pip install beautifulsoup4)
+Beautiful Soup 4 (`pip install beautifulsoup4`)
 
 ###---###
 
