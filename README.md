@@ -9,7 +9,7 @@ All functions should be run through the examples.py file, or any other script yo
 
 ##Installation
 
-`pip install pygenius`
+`pip install pygenius`  
 `easy_install pygenius`
 
 If you download the source from here, please make sure you have BeautifulSoup installed (`pip install beautifulsoup4`).
