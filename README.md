@@ -3,7 +3,7 @@
 Want to use data from rap songs in your Python scripts but bummed that there's no API to do so?  
 Well guess what?  NOW U CAN, DAWG.
 
-Welcome to PyGenius.
+Welcome to PyGenius, a rapy lyrics library for Python.
 
 All functions should be run through the examples.py file, or any other script you create.
 
