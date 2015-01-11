@@ -12,4 +12,5 @@ src/pygenius.egg-info
 src/build
 src/dist
 .DS_Store
+*.swp
 *~
