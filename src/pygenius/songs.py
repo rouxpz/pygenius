@@ -72,7 +72,7 @@ def searchSong(artist, query, arg='data'):
 	query = query.replace("'", '')
 	query = artist +'-' + query + '-lyrics'
 
-	url = "http://rapgenius.com/%s" % query
+	url = "http://genius.com/%s" % query
         return(searchURL(url, arg))
 
 #returns content of annotations

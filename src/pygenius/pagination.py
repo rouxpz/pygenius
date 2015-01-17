@@ -5,7 +5,7 @@ import pageopen
 def openPage(artist):
 
 	artist = '-'.join(artist.split())
-	url = "http://rapgenius.com/artists/%s" % artist
+	url = "http://genius.com/artists/%s" % artist
 
 	soup = pageopen.openPage(url)
 
@@ -23,7 +23,7 @@ def openPage(artist):
 #gets the total pages available as an integer, for use with wordsearch
 def getTotalPages(query):
 
-	url = 'http://rapgenius.com/search?q=%s' % query
+	url = 'http://genius.com/search?q=%s' % query
 
 	soup = pageopen.openPage(url)
 
@@ -78,7 +78,7 @@ def getSongs(link):
 					p = re.search(r'\/.*?\"', song)
 					page = p.group(0)
 					page = page.replace('"', '')
-					page = 'http://rapgenius.com%s' % page
+					page = 'http:%s' % page
 					links.append(page)
 
 				song = re.sub(r'\<.*?\>', '', song)
