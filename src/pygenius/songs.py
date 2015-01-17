@@ -66,10 +66,6 @@ def searchURL(url, arg='data'):
 
 def searchSong(artist, query, arg='data'):
 
-	data = []
-	lyrics = []
-	annotations = []
-
 	artist = '-'.join(artist.split())
 
 	query = '-'.join(query.split())
@@ -77,56 +73,7 @@ def searchSong(artist, query, arg='data'):
 	query = artist +'-' + query + '-lyrics'
 
 	url = "http://rapgenius.com/%s" % query
-	soup = pageopen.openPage(url)
-	text = soup.find_all(class_="lyrics")
-	l = len(text)
-
-	for i in range(0, l):
-		words = str(text[i])
-		words = words.replace("<div", "{<div").replace('">', '">}')
-		words = re.sub(r'\{.*?\}', '', words)
-		words = words.replace('">}', '">')
-		words = words.replace("<i>", '').replace("</i>", '')
-		words = words.replace('<br/>', '')
-		words = words.replace("<p>", '').replace("</p>", '')
-		words = words.split("</a>")
-
-		m = len(words)
-
-		for j in range(0, m-1):
-			a = re.search(r'\<.*?\>', words[j])
-			lyric = re.sub(r'\<.*?\>', '', words[j])
-			lyric = lyric.strip()
-			#lyric = ' '.join(lyric.split())
-			annotation = a.group(0)
-			#print lyric
-			
-			lyrics.append(lyric)
-
-			search1 = annotation.find('"no_annotation"')
-			search2 = annotation.find('data-editorial-state')
-
-			if search1 != -1:
-				annotations.append("Not annotated")
-			elif search2 != -1:
-				annotation = re.sub(r'\<.*?\/', '', annotation)
-				annotation = annotation.replace('">', '')
-				annotations.append('http://rapgenius.com/' + annotation)
-			else:
-				annotations.append("Not annotated")
-
-	m = len(lyrics)
-
-	for i in range (0, m):
-		data.append([lyrics[i], annotations[i]])
-
-	if arg == 'lyrics':
-		return lyrics
-	elif arg == 'link':
-		return annotations
-	else:
-		return data
-
+        return(searchURL(url, arg))
 
 #returns content of annotations
 def searchAnnotations(query):
