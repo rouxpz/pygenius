@@ -7,19 +7,13 @@ import pagination
 
 #returns song lyrics and the link to the annotations.
 #when arg="annotations", the results can be passed into the searchAnnotations() function below.
-def searchSong(artist, query, arg='data'):
+
+def searchURL(url, arg='data'):
 
 	data = []
 	lyrics = []
 	annotations = []
 
-	artist = '-'.join(artist.split())
-
-	query = '-'.join(query.split())
-	query = query.replace("'", '')
-	query = artist +'-' + query + '-lyrics'
-
-	url = "http://rapgenius.com/%s" % query
 	soup = pageopen.openPage(url)
 	text = soup.find_all(class_="lyrics")
 	l = len(text)
@@ -70,6 +64,16 @@ def searchSong(artist, query, arg='data'):
 	else:
 		return data
 
+def searchSong(artist, query, arg='data'):
+
+	artist = '-'.join(artist.split())
+
+	query = '-'.join(query.split())
+	query = query.replace("'", '')
+	query = artist +'-' + query + '-lyrics'
+
+	url = "http://genius.com/%s" % query
+        return(searchURL(url, arg))
 
 #returns content of annotations
 def searchAnnotations(query):
